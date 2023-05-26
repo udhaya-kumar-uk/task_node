@@ -1,15 +1,16 @@
 const express=require("express");
 const appserver = require("./appserver");
 const nodeserver=express();
+const env=require("dotenv")
+env.config()
 
 
-const PORT=4000
 
 nodeserver.use('/',appserver)
 
 try {
-    nodeserver.listen(PORT,'localhost',()=>{
-        console.log('server start',PORT)
+    nodeserver.listen(process.env.port,'localhost',()=>{
+        console.log('server start',process.env.port)
     });
 } catch (error) {
       console.log(error)   
